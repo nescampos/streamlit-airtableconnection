@@ -5,7 +5,7 @@ from pyairtable import Api, Table
 from pyairtable.api.types import RecordDict, RecordDeletedDict
 
 class AirtableConnection(ExperimentalBaseConnection[Api]):
-    def _connect(self, **kwargs) -> pyairtable.Api:
+    def _connect(self, **kwargs) -> Api:
         if 'access_token' in kwargs:
             access_token = kwargs.pop('access_token')
         else:
