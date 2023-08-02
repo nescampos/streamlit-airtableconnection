@@ -1,6 +1,7 @@
 from streamlit.connections import ExperimentalBaseConnection
 from streamlit.runtime.caching import cache_data
 from typing import List
+import json
 
 from pyairtable import Api, Table
 from pyairtable.api.types import RecordDict, RecordDeletedDict
@@ -35,7 +36,8 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
 
     def create(self, base_id, table_name, record) -> RecordDict:
         table = self._instance.table(base_id, table_name)
-        record = self._instance.create(base_id, table_name,record)
+        json_object = json.loads(record)
+        record = table.create(json_object)
         return record
 
     def create_many(self, base_id, table_name, records) -> List[RecordDict]:
