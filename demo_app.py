@@ -35,9 +35,9 @@ st.markdown("""
 ### Connect to airtable and perform CRUD operations using Experimental Connections
 """)
 
-airtable_accesstoken = st.text("Enter your access token from Airtable API: ")
-airtable_baseid = st.text("Enter your base id from Airtable API: ")
-airtable_tablename = st.text("Enter your table name from Airtable API: ")
+airtable_accesstoken = st.text_input("Enter your access token from Airtable API: ")
+airtable_baseid = st.text_input("Enter your base id from Airtable API: ")
+airtable_tablename = st.text_input("Enter your table name from Airtable API: ")
 
 if st.button("Connect and get all records"):
     conn = st.experimental_connection("airtable",type=AirtableConnection,access_token=airtable_accesstoken)
@@ -45,7 +45,7 @@ if st.button("Connect and get all records"):
 
     st.write(records)
 
-airtable_getrecordId = st.text("Enter your record id to search: ")
+airtable_getrecordId = st.text_input("Enter your record id to search: ")
 
 if st.button("Connect and get record"):
     conn = st.experimental_connection("airtable",type=AirtableConnection,access_token=airtable_accesstoken)
@@ -53,7 +53,7 @@ if st.button("Connect and get record"):
 
     st.write(record)
 
-airtable_createrecord = st.text("Enter your record to create (in Dictionary format): ", placeholder="{'Name': 'John'}")
+airtable_createrecord = st.text_input("Enter your record to create (in Dictionary format): ", placeholder="{'Name': 'John'}")
 
 if st.button("Connect and create record"):
     conn = st.experimental_connection("airtable",type=AirtableConnection,access_token=airtable_accesstoken)
@@ -61,8 +61,8 @@ if st.button("Connect and create record"):
 
     st.write(record)
 
-airtable_updaterecordId = st.text("Enter your record id to update: ")
-airtable_updatefields = st.text("Enter your record fields to update (in Dictionary format): ", placeholder="{'Age': 21}")
+airtable_updaterecordId = st.text_input("Enter your record id to update: ")
+airtable_updatefields = st.text_input("Enter your record fields to update (in Dictionary format): ", placeholder="{'Age': 21}")
 
 if st.button("Connect and update record"):
     conn = st.experimental_connection("airtable",type=AirtableConnection,access_token=airtable_accesstoken)
@@ -70,7 +70,7 @@ if st.button("Connect and update record"):
 
     st.write(record)
 
-airtable_deleterecordId = st.text("Enter your record id to delete: ")
+airtable_deleterecordId = st.text_input("Enter your record id to delete: ")
 
 if st.button("Connect and delete record"):
     conn = st.experimental_connection("airtable",type=AirtableConnection,access_token=airtable_accesstoken)
