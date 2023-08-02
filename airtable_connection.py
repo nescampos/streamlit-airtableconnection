@@ -35,7 +35,7 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
 
     def create(self, base_id, table_name, record) -> RecordDict:
         table = self._instance.table(base_id, table_name)
-        record = table.create(record)
+        record = self._instance.create(base_id, table_name,record)
         return record
 
     def create_many(self, base_id, table_name, records) -> List[RecordDict]:
