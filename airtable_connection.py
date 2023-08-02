@@ -42,17 +42,20 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
 
     def create_many(self, base_id, table_name, records) -> List[RecordDict]:
         table = self._instance.table(base_id, table_name)
-        records = table.batch_create(records)
+        json_object = json.loads(records)
+        records = table.batch_create(json_object)
         return records
 
     def update(self, base_id, table_name, record_id, fields, replace=False) -> RecordDict:
         table = self._instance.table(base_id, table_name)
-        record = table.update(record_id, fields, replace=replace)
+        json_object = json.loads(fields)
+        record = table.update(record_id, json_object, replace=replace)
         return record
 
     def update_many(self, base_id, table_name, records, replace=False) -> List[RecordDict]:
         table = self._instance.table(base_id, table_name)
-        records = table.batch_update(records, replace=replace)
+        json_object = json.loads(records)
+        records = table.batch_update(json_object, replace=replace)
         return records
 
     def delete(self, base_id, table_name, record_id) -> RecordDeletedDict:
