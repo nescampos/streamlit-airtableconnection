@@ -4,7 +4,7 @@ from streamlit.runtime.caching import cache_data
 from pyairtable import Api, Table
 from pyairtable.api.types import RecordDict, RecordDeletedDict
 
-class AirtableConnection(ExperimentalBaseConnection[pyairtable.Api]):
+class AirtableConnection(ExperimentalBaseConnection[Api]):
     def _connect(self, **kwargs) -> pyairtable.Api:
         if 'access_token' in kwargs:
             access_token = kwargs.pop('access_token')
