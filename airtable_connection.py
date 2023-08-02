@@ -15,14 +15,8 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
     
     def get_all(self, base_id, table_name, ttl: int = 3600) -> List[RecordDict]:
         table = self._instance().table(base_id, table_name)
-        
-        @cache_data(ttl=ttl)
-        def _getAll(base_id, table_name):
-            
-            records = table.all()
-            return records
-
-        return _getAll(base_id, table_name)
+        records = table.all()
+        return records
 
     def get(self, base_id, table_name, record_id, ttl: int = 3600) -> RecordDict:
         @cache_data(ttl=ttl)
