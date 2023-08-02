@@ -1,5 +1,6 @@
 from streamlit.connections import ExperimentalBaseConnection
 from streamlit.runtime.caching import cache_data
+from typing import List
 
 from pyairtable import Api, Table
 from pyairtable.api.types import RecordDict, RecordDeletedDict
