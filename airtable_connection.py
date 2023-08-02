@@ -12,9 +12,13 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
         else:
             access_token = self._secrets['access_token'] 
         return Api(access_token)
+
+    def api(self) -> Api:
+        return self._instance()
+    
     
     def get_all(self, base_id, table_name, ttl: int = 3600) -> List[RecordDict]:
-        table = self._instance().table(base_id, table_name)
+        table = self.api().table(base_id, table_name)
         records = table.all()
         return records
 
