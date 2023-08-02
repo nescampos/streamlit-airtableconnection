@@ -13,7 +13,7 @@ class AirtableConnection(ExperimentalBaseConnection[Api]):
         return Api(access_token)
 
     
-    def get_all(self, base_id, table_name, ttl: int = 3600) -> Iterator[List[RecordDict]]:
+    def get_all(self, base_id, table_name, ttl: int = 3600) -> List[RecordDict]:
         @cache_data(ttl=ttl)
         def _getAll(base_id, table_name):
             table = self._instance().table(base_id, table_name)
