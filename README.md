@@ -19,14 +19,14 @@ conn = st.experimental_connection("airtable",type=AirtableConnection,access_toke
 **get_all**: Get all information from a table. 
 
 ```python 
-records = conn.get_all(airtable_baseid,airtable_tablename)
+records = conn.get_all(airtable_baseid,airtable_tablename,ttl_for_cache)
 st.write(records)
 ```
 
 **get**: Get a record from the table. 
 
 ```python 
-record = conn.get(airtable_baseid,airtable_tablename,record_id = airtable_getrecordId)
+record = conn.get(airtable_baseid,airtable_tablename,airtable_getrecordId,ttl_for_cache)
 st.write(record)
 ```
 
